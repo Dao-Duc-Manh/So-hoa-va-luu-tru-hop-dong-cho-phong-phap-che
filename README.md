@@ -1,10 +1,19 @@
-Số hóa và lưu trữ hợp đồng cho phòng pháp chế
-<img width="1616" height="558" alt="image" src="https://github.com/user-attachments/assets/465191b9-6ed4-4fcb-b904-64c5fb4f095b" />
-Hệ Thống Quản Lý Hợp Đồng (ChinhSachSo)
-Giới Thiệu
+<div align="center">
+
+# 🎓 Số hóa và lưu trữ hợp đồng cho phòng pháp chế
+</div>
+
+<div align="center">
+<p align="center">
+  <img width="1616" height="558" alt="image" src="https://github.com/user-attachments/assets/465191b9-6ed4-4fcb-b904-64c5fb4f095b" />
+</p>
+</div>
+<h3 align="center">🔬 Hệ Thống Quản Lý Hợp Đồng (ChinhSachSo) </h3>
+
+## Giới Thiệu
 Ứng dụng web ASP.NET Core để quản lý hợp đồng, hỗ trợ tải lên, xem, chỉnh sửa, xóa tệp (PDF, JPG, JPEG, PNG) với trích xuất văn bản OCR bằng Tesseract và lưu trữ trên SQL Server.
 
-Cài Đặt Môi Trường
+## Cài Đặt Môi Trường
 
 Yêu cầu: .NET 8 SDK, SQL Server, Tesseract OCR (với tessdata chứa vie.traineddata, eng.traineddata), ImageMagick.
 Cài đặt:
@@ -14,18 +23,18 @@ Chạy migrations: dotnet ef migrations add InitialCreate và dotnet ef database
 Đặt thư mục tessdata trong dự án.
 Cài gói NuGet: dotnet restore.
 
-Tính Năng
+## Tính Năng
 
 Tải lên hợp đồng (PDF/ảnh, tối đa 10MB) với trích xuất OCR.
 Xem, chỉnh sửa, xóa hợp đồng (riêng lẻ hoặc toàn bộ).
 Tìm kiếm và đánh dấu từ khóa trong văn bản OCR.
 Lưu trữ tệp trong wwwroot/uploads/temp và dữ liệu trong SQL Server.
 
-Chạy Dự Án
+## Chạy Dự Án
 dotnet run
 
 Truy cập: https://localhost:5001/Contract.
-Kết Quả
+## Kết Quả
 
 Tải lên và trích xuất văn bản từ tệp hợp đồng.
 Quản lý hợp đồng qua giao diện web (xem, sửa, xóa).
