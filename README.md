@@ -17,7 +17,6 @@
 
 Yêu cầu: .NET 8 SDK, SQL Server, Tesseract OCR (với tessdata chứa vie.traineddata, eng.traineddata), ImageMagick.
 Cài đặt:
-Sao chép kho lưu trữ: git clone <url>.
 Cấu hình chuỗi kết nối trong appsettings.json.
 Chạy migrations: dotnet ef migrations add InitialCreate và dotnet ef database update.
 Đặt thư mục tessdata trong dự án.
@@ -30,10 +29,7 @@ Xem, chỉnh sửa, xóa hợp đồng (riêng lẻ hoặc toàn bộ).
 Tìm kiếm và đánh dấu từ khóa trong văn bản OCR.
 Lưu trữ tệp trong wwwroot/uploads/temp và dữ liệu trong SQL Server.
 
-## Chạy Dự Án
-dotnet run
 
-Truy cập: https://localhost:5001/Contract.
 ## Kết Quả
 
 Tải lên và trích xuất văn bản từ tệp hợp đồng.
