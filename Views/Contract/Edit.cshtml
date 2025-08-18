@@ -1,0 +1,58 @@
+﻿@model Chinhsachso.Models.Contract
+
+@{
+    ViewData["Title"] = "Sửa hợp đồng";
+}
+
+<h2>Sửa hợp đồng</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="ContractName">Tên hợp đồng (sửa tên thủ công)</label>
+        <input asp-for="ContractName" class="form-control" />
+        <span asp-validation-for="ContractName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OCRText">Văn bản OCR (sửa trực tiếp nếu sai)</label>
+        <textarea asp-for="OCRText" class="form-control" rows="10" id="ocrText"></textarea>
+        <span asp-validation-for="OCRText" class="text-danger"></span>
+    </div>
+
+    <!-- Tìm từ khóa trong văn bản OCR để hỗ trợ sửa (select text) -->
+    <div class="form-group">
+        <label>Tìm từ khóa trong văn bản OCR (sẽ select để dễ sửa):</label>
+        <input type="text" id="searchKeyword" class="form-control" placeholder="Nhập từ khóa" />
+        <button type="button" class="btn btn-info mt-2" onclick="findAndSelectText()">Tìm và Select</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+<script>
+    function findAndSelectText() {
+        var keyword = document.getElementById("searchKeyword").value;
+        if (keyword === "") return;
+
+        var textarea = document.getElementById("ocrText");
+        var text = textarea.value;
+        var startPos = text.toLowerCase().indexOf(keyword.toLowerCase()); 
+
+        if (startPos !== -1) {
+            var endPos = startPos + keyword.length;
+            textarea.focus();
+            textarea.setSelectionRange(startPos, endPos);
+            textarea.scrollTop = textarea.scrollHeight * (startPos / text.length); 
+        } else {
+            alert("Không tìm thấy từ khóa.");
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Tải lên hợp đồng";
+}
+
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Chọn file hợp đồng</label>
+        <input type="file" name="file" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Tải lên</button>
+</form>

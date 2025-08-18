@@ -1,0 +1,20 @@
+﻿@model Chinhsachso.Models.Contract
+
+<h2>Xóa hợp đồng</h2>
+
+<div>
+    <h4>Bạn có chắc muốn xóa hợp đồng này?</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Tên file</dt>
+        <dd class="col-sm-10">@Model.FileName</dd>
+
+        <dt class="col-sm-2">Ngày tải lên</dt>
+        <dd class="col-sm-10">@Model.UploadedAt</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>

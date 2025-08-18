@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Chinhsachso.Models.Contract>
+
+@{
+    ViewData["Title"] = "Danh sách hợp đồng";
+}
+
+<h2>Danh sách hợp đồng</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Thêm hợp đồng mới</a>
+    <a class="btn btn-danger" asp-action="DeleteAll">Xóa tất cả hợp đồng</a>
+</p>
+
+<style>
+    .ocr-preview {
+        max-height: 100px;
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+</style>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên file</th>
+            <th>Tên hợp đồng</th>
+            <th>Ngày tải lên</th>
+            <th>Văn bản OCR (Đã xử lý)</th>
+            <th>Công cụ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FileName
+                    @if (!string.IsNullOrEmpty(item.FilePath))
+                    {
+                        <br />
+                    }
+                </td>
+                <td>@item.ContractName</td>
+                <td>@item.UploadedAt.AddHours(0).ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <div class="ocr-preview" id="ocr-@item.Id">
+                        @item.OCRText
+                    </div>
+                    @if (!string.IsNullOrEmpty(item.OCRText) && item.OCRText.Length > 200)
+                    {
+                        <button class="btn btn-link p-0" onclick="toggleOCR(@item.Id)">Xem thêm</button>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function toggleOCR(id) {
+        var el = document.getElementById("ocr-" + id);
+        if (el.style.maxHeight) {
+            el.style.maxHeight = null;
+        } else {
+            el.style.maxHeight = "none";
+        }
+    }
+</script>

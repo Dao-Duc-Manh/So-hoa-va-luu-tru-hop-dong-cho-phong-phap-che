@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Xóa toàn bộ hợp đồng";
+}
+
+<h2>Xóa toàn bộ hợp đồng</h2>
+
+<div>
+    <h4>Bạn có chắc muốn xóa toàn bộ hợp đồng?</h4>
+    <p>Lưu ý: Hành động này không thể hoàn tác.</p>
+
+    <form asp-action="DeleteAllConfirmed" method="post">
+        <button type="submit" class="btn btn-danger">Xóa tất cả</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
